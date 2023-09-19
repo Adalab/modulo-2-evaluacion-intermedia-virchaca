@@ -1,0 +1,23 @@
+.main {
+    border: 5px solid green;
+    display: grid;
+    justify-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 20px;
+}
+
+.js-btnPlay {
+    background-color: rgb(85, 159, 189);
+    color: white;
+    cursor: pointer;
+}
+
+.js-result {
+    background-color: rgb(85, 159, 189);
+    color: white;
+    width: fit-content;
+}
+
+.hidden {
+    display: none;
+}
