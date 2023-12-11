@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 /*
 1- crear html: select, btn, texto vamos a jugar (al arrancar la pagina) y parrafos resultados
@@ -26,7 +26,7 @@
                     si num usuaria
 
 
-                    pidera> tijera
+                    piedra> tijera
                     tijar>papel
                     papel>piedra
 
@@ -43,103 +43,131 @@ BONUS: Se acumulan los resultados hasta 10 vueltas
 */
 
 //constantes
-const select = document.querySelector('.js-select');
-const btnPlay = document.querySelector('.js-btnPlay');
-const result = document.querySelector('.js-result');
-const pPlayer = document.querySelector('.js-player');
-const pComputer = document.querySelector('.js-computer');
-
+const select = document.querySelector(".js-select");
+const btnPlay = document.querySelector(".js-btnPlay");
+const result = document.querySelector(".js-result");
+const pPlayer = document.querySelector(".js-playerScore");
+const pComputer = document.querySelector(".js-computerScore");
+const pRound = document.querySelector(".js-roundScore");
+const btnInstructions = document.querySelector(".js-btnInstructions");
+const instructionsList = document.querySelector(".js-instructionsList");
+// Variables
+let roundsPlayed = 0; //new
+let playerScore = 0; //new
+let computerScore = 0; //new
 
 //funciones
 
 function getRandomNumber(max) {
-    return Math.ceil(Math.random() * max);
-    }
-
-function final () {
-    if (result === 'Has ganado'){
-        pPlayer.innerHTML += 1;
-        console.log('ganas');
-    }
-    if (result === 'Has perdido'){
-        console.log('pierdes');
-       pComputer.innerHTML += 1;
-    }
+  return Math.ceil(Math.random() * max);
 }
 
-function getResult () {
-const resultUsuaria = select.value;
-const randonNumber = getRandomNumber (9);
-console.log(randonNumber);
-
-    if (randonNumber <= 3) { //piedra
-        if (resultUsuaria === 'piedra') {
-            result.innerHTML = 'Empate';
-        } else if (resultUsuaria === 'papel') {
-            result.innerHTML = 'Has Perdido';
-        } else if (resultUsuaria === 'tijera') {
-            result.innerHTML = 'Has ganado';
-        }
-    }
-    else if (randonNumber >= 7) { //papel
-        if (resultUsuaria === 'piedra') {
-            result.innerHTML = 'Has Perdido';
-        } else if (resultUsuaria === 'papel') {
-            result.innerHTML = 'Empate';
-        } else if (resultUsuaria === 'tijera') {
-            result.innerHTML = 'Has ganado';
-        }
-    }
-    else if (randonNumber >= 4 && randonNumber <= 6) { //tijera
-        if (resultUsuaria === 'piedra') {
-            result.innerHTML = 'Has ganado';
-        } else if (resultUsuaria === 'papel') {
-            result.innerHTML = 'Has perdido';
-        } else if (resultUsuaria === 'tijera') {
-            result.innerHTML = 'Empate';
-        }
-    }
-    
+function updateScores() {
+  //new
+  pPlayer.innerHTML = playerScore; //new
+  pComputer.innerHTML = computerScore; //new
+  pRound.innerHTML = roundsPlayed; //new
 }
-       
+
+function getResult() {
+  const resultUsuaria = select.value;
+  const randonNumber = getRandomNumber(9);
+  console.log(randonNumber);
+
+  if (randonNumber <= 3) {
+    //piedra
+    if (resultUsuaria === "piedra") {
+      result.innerHTML = "Empate";
+      roundsPlayed++;
+    } else if (resultUsuaria === "papel") {
+      result.innerHTML = "Has ganado";
+      playerScore++; //new
+      roundsPlayed++;
+    } else if (resultUsuaria === "tijera") {
+      result.innerHTML = "Has Perdido";
+      computerScore++; //new
+      roundsPlayed++;
+    }
+  } else if (randonNumber >= 7) {
+    //papel
+    if (resultUsuaria === "piedra") {
+      result.innerHTML = "Has Perdido";
+      computerScore++; //new
+      roundsPlayed++;
+    } else if (resultUsuaria === "papel") {
+      result.innerHTML = "Empate";
+      roundsPlayed++;
+    } else if (resultUsuaria === "tijera") {
+      result.innerHTML = "Has ganado";
+      playerScore++; //new
+      roundsPlayed++;
+    }
+  } else if (randonNumber >= 4 && randonNumber <= 6) {
+    //tijera
+    if (resultUsuaria === "piedra") {
+      result.innerHTML = "Has ganado";
+      playerScore++; //new
+      roundsPlayed++;
+    } else if (resultUsuaria === "papel") {
+      result.innerHTML = "Has perdido";
+      computerScore++; //new
+      roundsPlayed++;
+    } else if (resultUsuaria === "tijera") {
+      result.innerHTML = "Empate";
+      roundsPlayed++;
+    }
+  }  
+  updateScores(); //new
+}
+
 function handleClick(event) {
-    event.preventDefault();   
-    getResult ();
-    final();
-    }
+  event.preventDefault();
+  if (roundsPlayed < 10) {
+    getResult();
+  } else {
+    result.textContent =
+      '¡Juego terminado! Haz clic en "reset" para jugar de nuevo.';
+  }
+}
 
+function handleClickInstructions(event) {
+  event.preventDefault();
+  instructionsList.classList.toggle("hidden");
+}
 //eventos
-btnPlay.addEventListener('click', handleClick);
+btnPlay.addEventListener("click", handleClick);
 
+btnInstructions.addEventListener("click", handleClickInstructions);
 
-/***bonus***
- *  a los 10 clicks se acaba la partida -- se resetea
- *  se 
+/*** a los 10 clicks se acaba la partida -- se resetea 
  * ***/
 
-function reset () {
-    result.innerHTML = 'Empieza de nuevo';    
+function reset() {
+  if (playerScore > computerScore) {
+    result.innerHTML = "Gana player!!";
+  } else if (playerScore < computerScore) {
+    result.innerHTML = "Gana computer!!";
+  } else {
+    result.innerHTML = "Empatados! Vuelve a probar!";
+  }
 }
 
 let end = 0; // Inicializamos end en 0
-const resetGame = document.querySelector('.js-reset');
-const pEnd = document.querySelector('.js-pEnd');
+const resetGame = document.querySelector(".js-reset");
+const pEnd = document.querySelector(".js-pEnd");
 
-btnPlay.addEventListener('click', () => {
-    if (end < 11) { 
-        end++; 
-        console.log(`end: ${end}`); 
-        if (end === 11) {
-            resetGame.classList.remove('hidden');
-            pEnd.classList.remove('hidden');
-            reset();
-            console.log("¡El juego se detiene!");
-        }
+btnPlay.addEventListener("click", () => {
+  if (end < 11) {
+    end++;
+    console.log(`end: ${end}`);
+    if (end === 11) {
+      resetGame.classList.remove("hidden");
+      pEnd.classList.remove("hidden");
+      reset();
+      console.log("¡El juego se detiene!");
     }
+  }
 });
-resetGame.addEventListener('click', () => {
-    location.reload(); 
+resetGame.addEventListener("click", () => {
+  location.reload();
 });
-
-
-

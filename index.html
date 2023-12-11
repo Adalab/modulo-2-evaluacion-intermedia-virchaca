@@ -1,44 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EJERCICIO REPASO INTERMEDIO</title>
 
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="body">
     <main class="main">
-    
-        <h1 class="title">Juego Piedra, Papel y Tijera</h1>
-        <h2 class="subtitle">Introduce aquí tu jugada:</h2>
+      <h1 class="title">Juego Piedra, Papel y Tijera</h1>
+      <section class="instructionsSection">
+        <button class="btnInstructions js-btnInstructions">
+          Instrucciones de Juego
+        </button>
+        <ul class="instructionsList hidden js-instructionsList">
+          <li>
+            Elige elemento y dale a jugar, puedes cambiar de elemento en cada
+            ronda o seguir con el mismo
+          </li>
+          <li>
+            La partida son 10 rondas, cada vez que pulsas jugar, corre una
+            ronda.
+          </li>
+          <li>
+            Una vez finaliza la partida, da a reset para empezar una nueva.
+          </li>
+        </ul>
+      </section>
+      <h2 class="subtitle">Introduce aquí tu jugada:</h2>
 
-        <section class="playingSection">
+      <section class="playingSection">
         <select name="" id="" class="js-select">
-            <option value="">Seleccione su jugada</option>
-            <option value="piedra">piedra</option>
-            <option value="papel">papel</option>
-            <option value="tijera">tijera</option>
+          <option value="">Seleccione su jugada</option>
+          <option value="piedra">piedra</option>
+          <option value="papel">papel</option>
+          <option value="tijera">tijera</option>
         </select>
-        <button class="js-btnPlay">Jugar</button>
-        </section>
+        <button class="btnPlay js-btnPlay">Jugar</button>
+      </section>
 
-        <section >
-        <p class="js-result">Vamos a Jugar</p>
-        <p class="js-player">Jugador:</p>
-        <p class="js-computer">Computadora:</p>
-        </section>
-
-        <p class="hidden js-pEnd">Fin del Juego!</p>
-        <button class="hidden js-reset">RESET</button>
-</main>
-<footer>
-    <span class="mybrand">@virwebcreations23</span>
-</footer>
+      <section class="results">
+        <p class="resultLine js-result">Vamos a Jugar</p>
+        <p class="playerLine js-player">
+          Player: <span class="js-playerScore"></span>
+        </p>
+        <p class="computerLine js-computer">
+          Computer: <span class="js-computerScore"></span>
+        </p>
+        <p class="roundLine js-round">
+          Ronda: <span class="js-roundScore"></span>
+        </p>
+      </section>
+      <section class="resetSection">
+        <p class="hidden playAgain js-pEnd">
+          ¡¡¡Resetea para jugar de nuevo!!!
+        </p>
+        <button class="hidden playReset js-reset">RESET</button>
+      </section>
+    
+    </main>
+    <footer class="footer">
+      <span class="mybrand">@VirWebCreations</span>
+    </footer>
 
     <script src="./js/main.js"></script>
-</body>
+  </body>
 </html>
