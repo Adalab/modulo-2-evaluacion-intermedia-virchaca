@@ -1,11 +1,35 @@
+body{
+      background-image: url('../images/rockpaperscissors.png');
+      
+}
 .main {
-    border: 5px solid green;
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center;
     display: grid;
     justify-items: center;
+    background-size: contain;
     font-family: 'Courier New', Courier, monospace;
-    padding: 20px;
+    margin-block: 5rem;
+    width: 60vw;
+    height: 80vh;
+    margin: auto;
+    margin-top: 5rem;
+     
 }
-
+.title{
+    font-family: Rubik Bubbles;
+    /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  
+}
+.subtitle{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.playingSection{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .js-btnPlay {
     background-color: rgb(85, 159, 189);
     color: white;
@@ -14,10 +38,15 @@
 
 .js-result {
     background-color: rgb(85, 159, 189);
+    border: 1px solid black;
     color: white;
     width: fit-content;
 }
 
 .hidden {
     display: none;
+}
+.mybrand{
+    text-align: right;
+    color: rgb(38, 63, 38);
 }
