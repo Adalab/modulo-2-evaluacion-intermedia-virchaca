@@ -4,7 +4,7 @@
 
  Divertida aplicacion para jugar conrtra el ordenador a piedra, papel o tijera. 
  El ordenador sacará un número aletatorio del 1 al 9, según entre que valores se encuentre ese numero, se corresponderá con 🪨 piedra, con 📜 papel o con ✂.
- Elige tu elemento y pulsa jugar!! La aplicacion te dirá quien gana en cada ronda, y se irán sumando los puntos de cada uno en el contador:
+ Elige tu elemento y pulsa jugar!! La aplicacion te dirá si ganas o pierdes en cada ronda, y se irán sumando los puntos de cada uno en el contador:
 
 
  ![image](https://github.com/virchaca/piedra-papel-o-tijera---virchaca/assets/139872250/38682136-68e1-48fe-9f61-224c34b82e77) ***
@@ -12,7 +12,7 @@
  ![image](https://github.com/virchaca/piedra-papel-o-tijera---virchaca/assets/139872250/a0be6dc3-6071-4157-9de1-8269c55af324)
 
   
- Cada partida son 10 rondas, cada vez que pulsas ![image](https://github.com/virchaca/piedra-papel-o-tijera---virchaca/assets/139872250/1aa64eca-5040-49c8-b805-007a1baf095a) pasa una ronda.
+ Cada partida son 10 rondas, cada vez que pulsas ![image](https://github.com/virchaca/piedra-papel-o-tijera---virchaca/assets/139872250/1aa64eca-5040-49c8-b805-007a1baf095a) pasa una ronda. Al final de la partida, sabrás quien ha ganado!
 
 Pulsa el botón de intrucciones si no lo tienes claro!
 
