@@ -1,10 +1,13 @@
+
 .body {
   background-image: url("../images/rockpaperscissors.png");
   background-size: 70%;
-
+  
   @media all and (min-width: 768px)  {
     background-size: auto;
     background-repeat: repeat;
+    border: 100px solid black;
+    margin: 0;
     }
 }
 
@@ -46,7 +49,11 @@
   color: white;
   cursor: pointer;
 }
-
+.result{
+  color: #7e2c39;
+  font-weight: bolder;
+  
+}
 .resultLine {
   background-color: #7e2c39;
   border: 2px solid black;

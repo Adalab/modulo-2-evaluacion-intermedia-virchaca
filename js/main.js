@@ -45,7 +45,9 @@ BONUS: Se acumulan los resultados hasta 10 vueltas
 //constantes
 const select = document.querySelector(".js-select");
 const btnPlay = document.querySelector(".js-btnPlay");
-const result = document.querySelector(".js-result");
+const result = document.querySelector(".js-result"); 
+const playerResult = document.querySelector(".js-playerResult");
+const computerResult = document.querySelector(".js-computerResult");
 const pPlayer = document.querySelector(".js-playerScore");
 const pComputer = document.querySelector(".js-computerScore");
 const pRound = document.querySelector(".js-roundScore");
@@ -78,13 +80,19 @@ function getResult() {
     //piedra
     if (resultUsuaria === "piedra") {
       result.innerHTML = "Empate";
+      playerResult.innerHTML = "PIEDRA";
+      computerResult.innerHTML = "PIEDRA";
       roundsPlayed++;
     } else if (resultUsuaria === "papel") {
       result.innerHTML = "Has ganado";
+      playerResult.innerHTML = "PAPEL";
+      computerResult.innerHTML = "PIEDRA";
       playerScore++; //new
       roundsPlayed++;
     } else if (resultUsuaria === "tijera") {
       result.innerHTML = "Has Perdido";
+      playerResult.innerHTML = "TIJERA";
+      computerResult.innerHTML = "PIEDRA";
       computerScore++; //new
       roundsPlayed++;
     }
@@ -92,28 +100,40 @@ function getResult() {
     //papel
     if (resultUsuaria === "piedra") {
       result.innerHTML = "Has Perdido";
-      computerScore++; //new
+      playerResult.innerHTML = "PIEDRA";
+      computerResult.innerHTML = "PAPEL";
+      computerScore++; 
       roundsPlayed++;
     } else if (resultUsuaria === "papel") {
       result.innerHTML = "Empate";
+      playerResult.innerHTML = "PAPEL";
+      computerResult.innerHTML = "PAPEL";
       roundsPlayed++;
     } else if (resultUsuaria === "tijera") {
       result.innerHTML = "Has ganado";
-      playerScore++; //new
+      playerResult.innerHTML = "TIJERA";
+      computerResult.innerHTML = "PAPEL";
+      playerScore++; 
       roundsPlayed++;
     }
   } else if (randonNumber >= 4 && randonNumber <= 6) {
     //tijera
     if (resultUsuaria === "piedra") {
       result.innerHTML = "Has ganado";
-      playerScore++; //new
+      playerResult.innerHTML = "PIEDRA";
+      computerResult.innerHTML = "TIJERA";
+      playerScore++; 
       roundsPlayed++;
     } else if (resultUsuaria === "papel") {
       result.innerHTML = "Has perdido";
-      computerScore++; //new
+      playerResult.innerHTML = "PAPEL";
+      computerResult.innerHTML = "TIJERA";
+      computerScore++; 
       roundsPlayed++;
     } else if (resultUsuaria === "tijera") {
-      result.innerHTML = "Empate";
+      result.innerHTML = "Empate, los dos habeis sacado TIJERA";
+      playerResult.innerHTML = " TIJERA";
+      computerResult.innerHTML = "TIJERA";
       roundsPlayed++;
     }
   }  
@@ -122,7 +142,7 @@ function getResult() {
 
 function handleClick(event) {
   event.preventDefault();
-  if (roundsPlayed < 10) {
+  if (roundsPlayed < 3) {
     getResult();
   } else {
     result.textContent =
@@ -157,10 +177,10 @@ const resetGame = document.querySelector(".js-reset");
 const pEnd = document.querySelector(".js-pEnd");
 
 btnPlay.addEventListener("click", () => {
-  if (end < 11) {
+  if (end < 4) {
     end++;
     console.log(`end: ${end}`);
-    if (end === 11) {
+    if (end === 4) {
       resetGame.classList.remove("hidden");
       pEnd.classList.remove("hidden");
       reset();
